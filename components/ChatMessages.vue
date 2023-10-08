@@ -9,29 +9,30 @@
 	let userId = computed(() => userIdStore.userId);
 
 	currentGroupStore.$subscribe(() => {
-		getMessages();
+		get()
 	});
 
-	async function getMessages() {
-		const currentGroupValue = selectedGroup.value;
-		const { data: messages } = await useFetch('/api/message', {
-			method: 'POST',
-			body: { groupId: currentGroupValue },
-		});
-		messageList.value = messages.value;
+	async function get() {
+		messageList.value = await getMessages(selectedGroup.value)
 	}
 
-	async function deleteModal(messageId: number) {
+	function deleteModal(messageId: number) {
 		if (!confirm('Are you sure you want to delete this message?')) return;
-		await useFetch('/api/deleteMessage', {
+		useFetch('/api/deleteMessage', {
 			method: 'POST',
 			body: { messageId },
-		});
+		}).then(() => {
+			get()
+		})
 	}
 
 	setInterval(() => {
-		getMessages();
+		get()
 	}, 1000);
+
+	onMounted(() => {
+		get()
+	});
 </script>
 
 <template>

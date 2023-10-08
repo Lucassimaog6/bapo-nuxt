@@ -13,7 +13,7 @@ export const useUserIdStore = defineStore('userId', {
 });
 
 export const useCurrentGroupStore = defineStore('currentGroup', {
-    state: () => ({ currentGroup: 0 }),
+    state: () => ({ currentGroup: 1 }),
     actions: {
         setCurrentGroup(currentGroup: number) {
             this.currentGroup = currentGroup;

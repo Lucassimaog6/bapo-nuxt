@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "cockroachdb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
+  id       Int       @id @default(sequence())
   username String    @unique
   password String
   messages Message[]
@@ -16,14 +16,14 @@ model User {
 }
 
 model Group {
-  id       Int       @id @default(autoincrement())
+  id       Int       @id @default(sequence())
   name     String    @unique
   messages Message[]
   users    User[]
 }
 
 model Message {
-  id         Int      @id @default(autoincrement())
+  id         Int      @id @default(sequence())
   content    String
   created_at DateTime @default(now())
   author     User     @relation(fields: [authorId], references: [id])
