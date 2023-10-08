@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
-    "@prisma/client": "5.4.1",
+    "@prisma/client": "^5.4.1",
     "pinia": "^2.1.6",
     "prisma": "^5.4.1"
   }
