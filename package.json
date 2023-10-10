@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "prisma generate && nuxt build",
     "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -14,12 +14,11 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "nuxt": "^3.7.4",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "prisma": "^5.4.1"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.4.11",
-    "@prisma/client": "^5.4.1",
-    "pinia": "^2.1.6",
-    "prisma": "^5.4.1"
+    "@pinia/nuxt": "^0.4.11",  
+    "pinia": "^2.1.6"
   }
 }
